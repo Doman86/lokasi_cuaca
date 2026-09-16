@@ -282,11 +282,12 @@ class _WeatherPageState extends State<WeatherPage> {
   Future<void> _openSearch() async {
     final controller = TextEditingController();
 
-    await showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) {
+    try {
+      await showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
         return StatefulBuilder(
           builder: (context, setModalState) {
             final query =
@@ -497,10 +498,11 @@ class _WeatherPageState extends State<WeatherPage> {
             );
           },
         );
-      },
-    );
-
-    controller.dispose();
+        },
+      );
+    } finally {
+      controller.dispose();
+    }
   }
 
   Future<void> _showRegionPicker({
@@ -510,11 +512,12 @@ class _WeatherPageState extends State<WeatherPage> {
   }) async {
     final controller = TextEditingController();
 
-    await showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) {
+    try {
+      await showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
         return StatefulBuilder(
           builder: (context, setModalState) {
             final query =
@@ -645,10 +648,11 @@ class _WeatherPageState extends State<WeatherPage> {
             );
           },
         );
-      },
-    );
-
-    controller.dispose();
+        },
+      );
+    } finally {
+      controller.dispose();
+    }
   }
 
   Widget _buildSelector({
